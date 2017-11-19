@@ -23,11 +23,11 @@ def maintain_aspect_ratio(img):
     height, width = img.shape[:2]
     if height > width:
         diff = int((height-width)/2)
-        crop_img=cv2.copyMakeBorder(img, top=0, bottom=0, left=diff, right=diff, 
-        borderType=cv2.BORDER_CONSTANT, value=(0, 0, 0))
+        crop_img = cv2.copyMakeBorder(img, top=0, bottom=0, left=diff, right=diff, 
+        borderType = cv2.BORDER_CONSTANT, value=(0, 0, 0))
     elif width > height:
         diff =int((width-height)/2)
-        crop_img =cv2.copyMakeBorder(img,top = diff, bottom = diff, left=0, right=0,borderType= cv2.BORDER_CONSTANT,value=(0, 0, 0))
+        crop_img = cv2.copyMakeBorder(img,top = diff, bottom = diff, left=0, right=0,borderType= cv2.BORDER_CONSTANT,value=(0, 0, 0))
     return crop_img
     
 def send_images_to_server(email_id):

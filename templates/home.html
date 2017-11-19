@@ -14,6 +14,20 @@
         {
             document.getElementById("contact_form").style.display = "block";
         }
+        function preview_image(input)
+        {
+            //alert(input.files[0]);
+            var reader = new FileReader();
+            reader.onload = function(e){
+                var img = document.createElement("img");
+                img.src = e.target.result;
+                img.class ="img-rounded";
+                img.height = "200";
+                img.width = "200";
+                document.getElementById("preview_images").appendChild(img);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     </script>
     <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
@@ -24,25 +38,25 @@
             <h2>Manage contacts</h2>
             <button type="button" class = "btn btn-success" onclick ="fetch_form()">Add contact</button>
             <form method="post" id = "contact_form" action="/send_images" enctype="multipart/form-data" style = "display:none" onsubmit="/send_images"> 
-                <span class = "label label-primary">Upload picture 1"</span>
-                <input type = "file" name = "pic_1" style="display: inline"/>
+                <span class = "label label-primary">Upload picture 1</span>
+                <input type = "file" name = "pic_1" style="display: inline" onchange = "preview_image(this)"/>
                 <br/><br/>
-                <span class = "label label-primary">Upload picture 2"</span>
-                <input type = "file"  name = "pic_2" style="display: inline"/>
+                <span class = "label label-primary">Upload picture 2</span>
+                <input type = "file"  name = "pic_2" style="display: inline" onchange = "preview_image(this)"/>
                 <br/><br/>
-                <span class = "label label-primary">Upload picture 3"</span>
-                <input type = "file"  name = "pic_3" style="display: inline"/>
+                <span class = "label label-primary">Upload picture 3</span>
+                <input type = "file"  name = "pic_3" style="display: inline" onchange = "preview_image(this)"/>
                 <br/><br/>
-                <span class = "label label-primary">Upload picture 4"</span>
-                <input type = "file"  name = "pic_4" style="display: inline"/>
+                <span class = "label label-primary">Upload picture 4</span>
+                <input type = "file"  name = "pic_4" style="display: inline" onchange = "preview_image(this)"/>
                 <br/><br/>
-                <span class = "label label-primary">Upload picture 5"</span>
-                <input type = "file"  name = "pic_5" style="display: inline"/>
+                <span class = "label label-primary">Upload picture 5</span>
+                <input type = "file"  name = "pic_5" style="display: inline" onchange = "preview_image(this)"/>
                 <br/><br/>
                 <button type="submit" class = "btn btn-success" onclick ="fetch_form()">Upload</button>
             </form>
         </div>
-        <div class = "col-md-6">
+        <div class = "col-md-6" id = "preview_images">
             <h2>Preview images</h2>
         </div>
     </body>    

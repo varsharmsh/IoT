@@ -5,15 +5,12 @@ def send_email(message,subject,toaddrs):
 
     fromaddr = 'intruders.iot@gmail.com'
     username = 'intruders.iot@gmail.com'
-    password = 'rajupal8'
-    
-    
+    password = 'rajupal8'     
     msg = MIMEText(message, 'html')    
     msg['Subject']  = subject    
     msg['From']=fromaddr    
     msg['Reply-to'] = 'no-reply'    
     msg['To'] = toaddrs  
-
     server = smtplib.SMTP("smtp.gmail.com", 587)
     server.ehlo()    
     server.starttls()
