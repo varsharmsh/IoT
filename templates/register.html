@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/register_style.css') }}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script type = "text/javascript">
+	function check_signup_details()
+	{
+		var password = document.getElementById("password").value;
+		var repassword = document.getElementById("repassword").value;
+		if(password != repassword)
+		{
+				alert("Password do not match");
+				return false;
+		}
+		return true;
+	}
+ </script>
+</head>
+<body>
+	<div class="col-md-6">
+			<h1 align="center">Login</h1>
+			<form  method="POST" action="/login">
+				<section id="content">
+					<input type="text" placeholder="Username" id="login_username" name = "login_username"/>
+					<br/><br/>
+					<input type="password" placeholder="Password" required="" id="login_password" name="login_password"/>
+					<br/><br/>
+					<button type="submit" class = "btn-warning">Log In </button>
+					<br/><br/>
+				</section>
+			</form>
+	</div>
+	<div class = "col-md-6">
+		<h1 align="center">Sign Up</h1>
+		<section id="content">
+			<form method="POST" action="/signup">
+				<input type="text" placeholder="Username" name="username" id="username"/>
+				<br/><br/>
+				<input type="text" placeholder="Email ID" name ="email" id="email"/>
+				<br/><br/>
+				<input type="password" placeholder="Password" required="" name="password" id="password"/>
+				<br/><br/>
+				<input type="password" placeholder="Re-enter Password" required="" name="repassword" id="repassword"/>
+				<br/><br/>
+				<button type="submit" onclick = "return check_signup_details();" class = "btn-warning">Sign Up </button>
+				<br/><br/>
+			</form>
+			</section>
+	</div>
+</body>
+</html>

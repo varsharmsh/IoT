@@ -1,0 +1,49 @@
+<html>    
+    <script type="text/javascript">
+        var username = '{{ user["username"] }}';
+        function get_username()
+        {
+            document.getElementById("welcome").innerHTML = "Welcome " + username + "!";
+            var input = document.createElement("input");
+            input.name = "username";
+            input.style.display = "none";
+            input.value = username;
+            document.getElementById("contact_form").appendChild(input);
+        }
+        function fetch_form()
+        {
+            document.getElementById("contact_form").style.display = "block";
+        }
+    </script>
+    <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <body onload = "get_username()">
+        <h1 id="welcome" align="center"></h1>
+        <div class = "col-md-6">
+            <h2>Manage contacts</h2>
+            <button type="button" class = "btn btn-success" onclick ="fetch_form()">Add contact</button>
+            <form method="post" id = "contact_form" action="/send_images" enctype="multipart/form-data" style = "display:none" onsubmit="/send_images"> 
+                <span class = "label label-primary">Upload picture 1"</span>
+                <input type = "file" name = "pic_1" style="display: inline"/>
+                <br/><br/>
+                <span class = "label label-primary">Upload picture 2"</span>
+                <input type = "file"  name = "pic_2" style="display: inline"/>
+                <br/><br/>
+                <span class = "label label-primary">Upload picture 3"</span>
+                <input type = "file"  name = "pic_3" style="display: inline"/>
+                <br/><br/>
+                <span class = "label label-primary">Upload picture 4"</span>
+                <input type = "file"  name = "pic_4" style="display: inline"/>
+                <br/><br/>
+                <span class = "label label-primary">Upload picture 5"</span>
+                <input type = "file"  name = "pic_5" style="display: inline"/>
+                <br/><br/>
+                <button type="submit" class = "btn btn-success" onclick ="fetch_form()">Upload</button>
+            </form>
+        </div>
+        <div class = "col-md-6">
+            <h2>Preview images</h2>
+        </div>
+    </body>    
+</html>
