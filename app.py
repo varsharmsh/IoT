@@ -52,7 +52,7 @@ def send_images():
     image_3.save(join(UPLOAD_FOLDER, secure_filename(image_3.filename)))
     image_4.save(join(UPLOAD_FOLDER, secure_filename(image_4.filename)))
     image_5.save(join(UPLOAD_FOLDER, secure_filename(image_5.filename)))
-    send_images_to_server(str(email_id))
+    send_images_to_server(str(email_id),str(username))
     return str(email_id)
 
 if __name__ == "__main__":

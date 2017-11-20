@@ -16,14 +16,15 @@
         }
         function preview_image(input)
         {
-            //alert(input.files[0]);
             var reader = new FileReader();
             reader.onload = function(e){
                 var img = document.createElement("img");
                 img.src = e.target.result;
-                img.class ="img-rounded";
+                img.className ="img-rounded";
                 img.height = "200";
                 img.width = "200";
+                img.style.display = "block";
+                img.style.marginTop = "20";
                 document.getElementById("preview_images").appendChild(img);
             };
             reader.readAsDataURL(input.files[0]);
