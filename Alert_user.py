@@ -27,11 +27,13 @@ server.starttls()
 """
 
 
-"""subject = raw_input("Enter subject\n")
+"""
+subject = raw_input("Enter subject\n")
 message = raw_input("Enter message\n")
 toaddrs = raw_input("Enter receiver email address\n")
-send_email(str(message),str(subject),str(toaddrs))"""
+send_email(str(message),str(subject),str(toaddrs))
 
+"""
 
 
 #https://myaccount.google.com/lesssecureapps

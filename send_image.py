@@ -4,11 +4,11 @@ import time
 import cv2
 import os
 
-UPLOAD_FOLDER = "./static/uploads/"
+UPLOAD_FOLDER = "static/uploads/"
 
 context = zmq.Context()  
 socket = context.socket(zmq.REQ)
-socket.connect("tcp://127.0.0.1:8000")
+socket.connect("tcp://192.168.43.157:8000")
 
 #Commands to send images
 CMD_SEND_IMAGE = 0x01
@@ -47,10 +47,12 @@ def send_images_to_server(email_id,name):
     cmd, par0, par1, par2, data_length  = parse_header(message[0:20])
     if cmd == CMD_READY_TRAIN:
         images = os.listdir(UPLOAD_FOLDER)
+        print(images)
         message = pack_response(CMD_SEND_IMAGE, len(images), 0, 0, 0)
         for i in images:
             img = cv2.imread(os.path.join(UPLOAD_FOLDER,i))
-            img = cv2.imread(i)
+            print(os.path.join(UPLOAD_FOLDER,i))
+            #img = cv2.imread(i)
             img = maintain_aspect_ratio(img)
             img = cv2.resize(img, (227, 227))
             img = img.flatten()
